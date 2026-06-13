@@ -353,3 +353,6 @@ Read the full [`DISCLAIMER.md`](DISCLAIMER.md) before redistributing.
 *"Every chip inside the world's drone fleet — open-sourced."*
 
 </div>
+
+---
+📡 **[Interop map](INTEROP.md)** — how this repo composes with the rest of the Cognis suite (private-AI backbone, agent language + cognition, domain intelligence).
