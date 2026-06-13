@@ -321,6 +321,20 @@ Machine-readable version: [`CITATION.cff`](CITATION.cff).
 
 ---
 
+## Related Cognis tools — the defense / drone / maritime OSINT cluster
+
+Part of an open suite of **defensive, analytical** intelligence tools that compose:
+
+- [`frontline-drones`](https://github.com/cognis-digital/frontline-drones) — descriptive catalog of frontline & commercial drones + NVIDIA HF model index + counter-UAS sensor selection guide
+- [`uaslog`](https://github.com/cognis-digital/uaslog) — counter-UAS telemetry/log analyzer (drone-detection events, RF bands, tracks)
+- [`maritimeint`](https://github.com/cognis-digital/maritimeint) — AIS grey/dark-fleet detection: prioritized watchlist + sanctions cross-reference
+- [`geolens`](https://github.com/cognis-digital/geolens) / [`locateanything`](https://github.com/cognis-digital/locateanything) — image geolocation (EXIF/sun-shadow & local vision+reasoning)
+- [`corpmap`](https://github.com/cognis-digital/corpmap) — beneficial-ownership mapper · [`cryptotrace`](https://github.com/cognis-digital/cryptotrace) — blockchain + sanctions xref
+- [`stixgen`](https://github.com/cognis-digital/stixgen) · [`iocextract`](https://github.com/cognis-digital/iocextract) · [`attackmap`](https://github.com/cognis-digital/attackmap) — IOC → STIX, ATT&CK mapping
+- Run private AI over your own hardware → [`edgemesh`](https://github.com/cognis-digital/edgemesh)
+
+**280+ open security & OSINT tools →** [github.com/cognis-digital](https://github.com/cognis-digital)
+
 ## Disclaimer
 
 This repository exists for **forensic, journalistic, academic, and
