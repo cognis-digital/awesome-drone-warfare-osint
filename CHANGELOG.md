@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.4.0] — 2026-06-13
+### Added
+- `docs/counter-uas-detection.md` — a defensive reference on how hostile drones are
+  detected/classified/identified (RF, radar micro-Doppler, acoustic, EO/IR sensor
+  fusion; DJI DroneID/OcuSync, RF fingerprinting), the descriptive C-UAS effector
+  landscape (EW, HPM/THOR/Leonidas, lasers, interceptors), and the governing standards
+  (FAA Remote ID, ASTM F3411 + its spoofing caveat, CISA/CRS/Army/NIST). Cited; strictly
+  detection/identification/analysis — no control/targeting/defeat procedures.
+- README quick-link to the counter-UAS reference.
+
 ## [0.3.0] — 2026-06-13
 ### Added
 - `docs/STATISTICS.md` — "what worked / what didn't" by the numbers: cited

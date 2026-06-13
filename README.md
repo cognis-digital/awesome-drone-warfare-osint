@@ -16,6 +16,7 @@
 🗺  **[Interactive map](https://cognis-digital.github.io/awesome-drone-warfare-osint)**  ·  
 📊  **[Top-50 most-found chips](docs/components/top50.md)**  ·  
 📈  **[What worked / didn't — cited statistics](docs/STATISTICS.md)**  ·  
+🛡  **[Counter-UAS detection & identification](docs/counter-uas-detection.md)**  ·  
 🧭  **[Drone family tree](docs/visualizations/family-tree.md)**  ·  
 🪪  **[Citation (BibTeX)](CITATION.cff)**  ·  
 ⚖  **[Ethical disclaimer](DISCLAIMER.md)**
