@@ -1,0 +1,48 @@
+name: 🔌 Propose a new component
+description: Add a previously undocumented part to data/components.csv
+title: "[component] <PART NUMBER>"
+labels: ["data:component", "good-first-row"]
+body:
+  - type: input
+    id: name_marking
+    attributes: { label: "Name / silkscreen marking" }
+    validations: { required: true }
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options: [mcu, soc, fpga, cpld, gnss, ins, imu, sensor, rf, datalink, transceiver, antenna, memory, power, regulator, optics, camera, ir_sensor, propulsion, motor, engine, esc, mechanical, connector, passive, unknown]
+    validations: { required: true }
+  - type: input
+    id: manufacturer
+    attributes: { label: "Manufacturer" }
+    validations: { required: true }
+  - type: input
+    id: manufacturer_country
+    attributes: { label: "Manufacturer country (ISO-2)" }
+    validations: { required: true }
+  - type: input
+    id: oem_part_number
+    attributes: { label: "OEM part number (if known)" }
+  - type: input
+    id: found_in_drones
+    attributes:
+      label: Found in which drone(s)? (comma-separated slugs)
+      placeholder: "shahed-136-geran-2-ms001, lancet-3"
+    validations: { required: true }
+  - type: input
+    id: source_url
+    attributes:
+      label: Public source URL (REQUIRED)
+      description: GUR portal, CAR field dispatch, IISS/RUSI report, peer-reviewed journalism
+    validations: { required: true }
+  - type: textarea
+    id: notes
+    attributes: { label: Notes }
+  - type: checkboxes
+    id: charter
+    attributes:
+      label: Charter
+      options:
+        - label: "Charter: no firmware/CAD/exploit/PII; public source provided."
+          required: true

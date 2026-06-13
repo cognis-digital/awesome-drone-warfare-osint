@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/USER/awesome-drone-warfare-osint/data/schemas/drones.schema.json",
+  "title": "Drone platform",
+  "type": "object",
+  "required": [
+    "id", "display_name", "operators", "manufacturer_country",
+    "role", "primary_source_url", "last_verified"
+  ],
+  "properties": {
+    "id":                   { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "display_name":         { "type": "string", "minLength": 1, "maxLength": 512 },
+    "aka":                  { "type": "array", "items": { "type": "string" } },
+    "operators": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^([A-Z]{2}|UNK)$" },
+      "minItems": 1
+    },
+    "manufacturer_country": { "type": "string", "pattern": "^([A-Z]{2}|UNK)$" },
+    "role": {
+      "type": "string",
+      "enum": [
+        "loitering_munition", "strike", "bomber", "fpv_strike",
+        "isr", "recon", "decoy", "ew", "communications_relay",
+        "usv", "ugv", "logistics", "training", "interceptor",
+        "missile", "subsystem", "unknown"
+      ]
+    },
+    "wingspan_m":            { "type": ["number", "null"], "minimum": 0 },
+    "length_m":              { "type": ["number", "null"], "minimum": 0 },
+    "mtow_kg":               { "type": ["number", "null"], "minimum": 0 },
+    "payload_kg":            { "type": ["number", "null"], "minimum": 0 },
+    "range_km":              { "type": ["number", "null"], "minimum": 0 },
+    "endurance_min":         { "type": ["number", "null"], "minimum": 0 },
+    "cruise_speed_kmh":      { "type": ["number", "null"], "minimum": 0 },
+    "ceiling_m":             { "type": ["number", "null"], "minimum": 0 },
+    "propulsion": {
+      "type": "string",
+      "enum": ["piston", "turbojet", "turboprop", "electric", "hybrid", "rocket", "unknown"]
+    },
+    "guidance":              { "type": "array", "items": { "type": "string" } },
+    "unit_cost_usd_est":     { "type": ["number", "null"], "minimum": 0 },
+    "first_observed":        { "type": ["string", "null"] },
+    "total_components_documented": { "type": "integer", "minimum": 0 },
+    "primary_source_url":    { "type": "string", "format": "uri" },
+    "secondary_sources":     { "type": "array", "items": { "type": "string", "format": "uri" } },
+    "image_url":             { "type": ["string", "null"] },
+    "model_3d_url":          { "type": ["string", "null"] },
+    "last_verified":         { "type": "string", "format": "date" },
+    "notes":                 { "type": ["string", "null"], "maxLength": 2048 }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,22 @@
+name: 🔍 Correct an existing row
+description: Challenge a row in data/*.csv with evidence
+title: "[correction] <table>:<id>"
+labels: ["data:correction"]
+body:
+  - type: input
+    id: row_id
+    attributes:
+      label: "Row ID (e.g. gur-7187 or shahed-136-geran-2-ms001)"
+    validations: { required: true }
+  - type: textarea
+    id: current_value
+    attributes: { label: "Current value (paste from CSV)" }
+    validations: { required: true }
+  - type: textarea
+    id: proposed_value
+    attributes: { label: "Proposed corrected value" }
+    validations: { required: true }
+  - type: input
+    id: evidence_url
+    attributes: { label: "Evidence URL (REQUIRED)" }
+    validations: { required: true }

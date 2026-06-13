@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/USER/awesome-drone-warfare-osint/data/schemas/manufacturers.schema.json",
+  "title": "Manufacturer",
+  "type": "object",
+  "required": ["manufacturer_id", "name", "country", "source_url"],
+  "properties": {
+    "manufacturer_id":      { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "name":                 { "type": "string", "minLength": 1, "maxLength": 256 },
+    "country":              { "type": "string", "pattern": "^([A-Z]{2}|UNK)$" },
+    "headquarters_city":    { "type": ["string", "null"], "maxLength": 128 },
+    "parent_company":       { "type": ["string", "null"], "maxLength": 256 },
+    "opensanctions_id":     { "type": ["string", "null"], "maxLength": 128 },
+    "sanctions_status": {
+      "type": "string",
+      "enum": ["unsanctioned", "eu", "us", "uk", "ofac", "multi", "unknown"]
+    },
+    "components_supplied":  { "type": "integer", "minimum": 0 },
+    "drones_supplied":      { "type": "integer", "minimum": 0 },
+    "source_url":           { "type": "string", "format": "uri" },
+    "notes":                { "type": ["string", "null"], "maxLength": 2048 }
+  },
+  "additionalProperties": false
+}

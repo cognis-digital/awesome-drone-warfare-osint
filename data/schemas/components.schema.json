@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/USER/awesome-drone-warfare-osint/data/schemas/components.schema.json",
+  "title": "Component",
+  "description": "A foreign-produced or otherwise identified component documented inside a drone/UAV platform.",
+  "type": "object",
+  "required": [
+    "component_id",
+    "name_marking",
+    "category",
+    "manufacturer",
+    "manufacturer_country",
+    "found_in_drones",
+    "source_url",
+    "last_verified"
+  ],
+  "properties": {
+    "component_id":          { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "name_marking":          { "type": "string", "minLength": 1, "maxLength": 1024 },
+    "category": {
+      "type": "string",
+      "enum": [
+        "mcu", "soc", "fpga", "cpld",
+        "gnss", "ins", "imu", "sensor",
+        "rf", "datalink", "transceiver", "antenna",
+        "memory", "power", "regulator",
+        "optics", "camera", "ir_sensor",
+        "propulsion", "motor", "engine", "esc",
+        "mechanical", "connector", "passive",
+        "unknown"
+      ]
+    },
+    "function":              { "type": ["string", "null"], "maxLength": 512 },
+    "manufacturer":          { "type": "string", "minLength": 1, "maxLength": 256 },
+    "manufacturer_country":  { "type": "string", "pattern": "^([A-Z]{2}|UNK)$" },
+    "oem_part_number":       { "type": ["string", "null"], "maxLength": 128 },
+    "production_date":       { "type": ["string", "null"], "maxLength": 32 },
+    "found_in_drones": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+      "minItems": 1
+    },
+    "sanctions_status": {
+      "type": "string",
+      "enum": ["unsanctioned", "eu", "us", "uk", "ofac", "multi", "unknown"]
+    },
+    "is_dual_use":           { "type": "boolean" },
+    "replaceable_with":      { "type": ["array", "null"], "items": { "type": "string" } },
+    "price_retail_usd":      { "type": ["number", "null"], "minimum": 0 },
+    "source_url":            { "type": "string", "format": "uri" },
+    "evidence_image":        { "type": ["string", "null"] },
+    "last_verified":         { "type": "string", "format": "date" },
+    "notes":                 { "type": ["string", "null"], "maxLength": 2048 }
+  },
+  "additionalProperties": false
+}

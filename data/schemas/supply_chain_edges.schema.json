@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/USER/awesome-drone-warfare-osint/data/schemas/supply_chain_edges.schema.json",
+  "title": "Supply-chain graph edge",
+  "type": "object",
+  "required": ["edge_id", "source_entity", "source_type", "target_entity", "target_type", "relation", "evidence_url"],
+  "properties": {
+    "edge_id":        { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "source_entity":  { "type": "string" },
+    "source_type":    { "type": "string", "enum": ["manufacturer", "distributor", "reseller", "shell_company", "state_actor", "end_user", "drone"] },
+    "target_entity":  { "type": "string" },
+    "target_type":    { "type": "string", "enum": ["manufacturer", "distributor", "reseller", "shell_company", "state_actor", "end_user", "drone"] },
+    "relation":       { "type": "string", "enum": ["sells_to", "ships_via", "controlled_by", "rebadges", "found_inside", "exports_to"] },
+    "evidence_url":   { "type": "string", "format": "uri" },
+    "confidence":     { "type": ["string", "null"], "enum": ["low", "medium", "high", null] },
+    "notes":          { "type": ["string", "null"], "maxLength": 1024 }
+  },
+  "additionalProperties": false
+}

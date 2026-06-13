@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/USER/awesome-drone-warfare-osint/data/schemas/teardowns.schema.json",
+  "title": "Teardown report",
+  "type": "object",
+  "required": ["teardown_id", "title", "organization", "url", "published_date"],
+  "properties": {
+    "teardown_id":     { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "title":           { "type": "string", "minLength": 1, "maxLength": 512 },
+    "drone_id":        { "type": ["string", "null"], "pattern": "^[a-z0-9-]+$|^$" },
+    "organization":    { "type": "string" },
+    "url":             { "type": "string", "format": "uri" },
+    "published_date":  { "type": "string", "format": "date" },
+    "doi":             { "type": ["string", "null"] },
+    "is_pdf":          { "type": "boolean" },
+    "components_referenced": { "type": "integer", "minimum": 0 },
+    "notes":           { "type": ["string", "null"], "maxLength": 1024 }
+  },
+  "additionalProperties": false
+}

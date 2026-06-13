@@ -1,0 +1,55 @@
+cff-version: 1.2.0
+title: >-
+  Awesome Drone Warfare OSINT: A Component-Level Forensic
+  Database of UAVs in the Russia–Ukraine War and Adjacent
+  Theaters
+message: >-
+  If you use this dataset, please cite both this repository
+  AND the underlying primary sources listed in the README.
+type: dataset
+authors:
+  - name: "Awesome Drone Warfare OSINT Contributors"
+repository-code: "https://github.com/cognis-digital/awesome-drone-warfare-osint"
+url: "https://cognis-digital.github.io/awesome-drone-warfare-osint"
+abstract: >-
+  An aggregated, schema-validated, machine-readable database
+  of foreign-produced components identified inside unmanned
+  aerial vehicles documented in the Russia–Ukraine war and
+  adjacent theaters. Built on top of the Defence Intelligence
+  of Ukraine (GUR/HUR) "War & Sanctions" portal, Ukraine's
+  NACP "Tools of War", Conflict Armament Research field
+  dispatches, and peer-institute reports (IISS, RUSI, KSE,
+  ISIS-online).
+keywords:
+  - OSINT
+  - drone warfare
+  - unmanned aerial vehicles
+  - sanctions enforcement
+  - supply chain
+  - Russia-Ukraine war
+  - forensic intelligence
+license: CC-BY-4.0
+license-url: "https://creativecommons.org/licenses/by/4.0/"
+version: "0.1.0"
+date-released: "2026-06-12"
+references:
+  - type: report
+    title: "Foreign components in Russian military drones"
+    authors:
+      - name: "Kyiv School of Economics Institute"
+    url: "https://kse.ua/about-the-school/news/foreign-components-in-russian-military-drones/"
+  - type: report
+    title: "The Orlan Complex: Tracking the Supply Chains of Russia's Most Successful UAV"
+    authors:
+      - name: "Royal United Services Institute"
+    url: "https://www.rusi.org/explore-our-research/publications/special-resources/orlan-complex-tracking-supply-chains-russias-most-successful-uav"
+  - type: report
+    title: "Tracking the Components of Missiles and UAVs Used by Russia in Ukraine"
+    authors:
+      - name: "International Institute for Strategic Studies"
+    url: "https://www.iiss.org/globalassets/media-library---content--migration/files/research-papers/2025/09/pub25-094-tracking-the-components-of-missiles-and-uavs-used-by-russia-in-ukraine.pdf"
+  - type: database
+    title: "War & Sanctions Portal — Foreign components in weapons"
+    authors:
+      - name: "Defence Intelligence of Ukraine (HUR/GUR)"
+    url: "https://war-sanctions.gur.gov.ua/en/components"

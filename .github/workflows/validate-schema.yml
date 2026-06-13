@@ -1,0 +1,26 @@
+name: Validate dataset
+
+on:
+  pull_request:
+    paths:
+      - 'data/**'
+      - 'data/schemas/**'
+      - 'scripts/validate.py'
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Validate against JSON Schema + Pandera
+        run: python scripts/validate.py
+      - name: Update README headline numbers
+        if: github.ref == 'refs/heads/main'
+        run: python scripts/headline_numbers.py

@@ -1,0 +1,35 @@
+name: ⚠️ Confidential take-down request
+description: For authorized representatives of a primary source or named entity
+title: "[takedown] <subject>"
+labels: ["takedown"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Per `DISCLAIMER.md`, take-down requests are reviewed within 72 hours.
+        For confidential matters, email the maintainers instead (see `MAINTAINERS.md`).
+  - type: input
+    id: requester
+    attributes: { label: "Your name / organization" }
+    validations: { required: true }
+  - type: input
+    id: contact_email
+    attributes: { label: "Contact email" }
+    validations: { required: true }
+  - type: textarea
+    id: rows
+    attributes:
+      label: "Specific rows / URLs affected"
+    validations: { required: true }
+  - type: textarea
+    id: reason
+    attributes:
+      label: "Reason for take-down"
+    validations: { required: true }
+  - type: checkboxes
+    id: authority
+    attributes:
+      label: Authority
+      options:
+        - label: "I am authorized to make this request on behalf of the subject."
+          required: true

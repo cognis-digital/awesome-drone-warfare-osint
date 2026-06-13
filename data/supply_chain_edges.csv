@@ -1,0 +1,29 @@
+edge_id,source_entity,source_type,target_entity,target_type,relation,evidence_url,confidence,notes
+ti-shahed,Texas Instruments,manufacturer,Shahed-136,drone,found_inside,https://war-sanctions.gur.gov.ua/en/page-shahed-136,high,Multiple TI parts in MS001
+adi-shahed,Analog Devices,manufacturer,Shahed-136,drone,found_inside,https://war-sanctions.gur.gov.ua/en/page-shahed-136,high,
+xilinx-shahed,Xilinx (AMD),manufacturer,Shahed-136,drone,found_inside,https://war-sanctions.gur.gov.ua/en/page-shahed-136,high,XCF16P FPGA config PROM
+mado-shahed,MADO,manufacturer,Shahed-136,drone,found_inside,https://war-sanctions.gur.gov.ua/en/page-shahed-136,high,MD550 piston engine - copy of Limbach L550E
+telefly-geran3,Telefly Telecommunications,manufacturer,Geran-3,drone,found_inside,https://war-sanctions.gur.gov.ua/en/page-geran-3,high,JT80 turbojet
+telefly-geran4,Telefly Telecommunications,manufacturer,Geran-4,drone,found_inside,https://war-sanctions.gur.gov.ua/en/components/7187,high,LX-WP-160 turbojet
+bosch-geran3,Bosch,manufacturer,Geran-3,drone,found_inside,https://war-sanctions.gur.gov.ua/en/page-geran-3,high,Fuel pump 0 580 254 044 111-30
+stm-geran3,STMicroelectronics,manufacturer,Geran-3,drone,found_inside,https://war-sanctions.gur.gov.ua/en/page-geran-3,high,"STM32F070, STM32F103, 24M02RD memory"
+fotek-geran4,FOTEK Controls,manufacturer,Geran-4,drone,found_inside,https://war-sanctions.gur.gov.ua/en/components/7186,high,Solid-state DC relay
+minmax-shahed,Minmax (Taiwan),manufacturer,Shahed-136,drone,found_inside,https://war-sanctions.gur.gov.ua/en/page-shahed-136,high,"DC/DC MCW03, MJWI20"
+stc-orlan,STC Saint Petersburg,manufacturer,Orlan-10,drone,found_inside,https://www.rusi.org/explore-our-research/publications/special-resources/orlan-complex-tracking-supply-chains-russias-most-successful-uav,high,RUSI Orlan Complex investigation
+sarmad-mohajer,Sarmad Electronic Sepahan,manufacturer,Mohajer-6,drone,found_inside,https://www.conflictarm.com/field-dispatches/,high,CAR-identified Iranian domestic supplier
+rotax-mohajer,BRP-Rotax,manufacturer,Mohajer-6,drone,found_inside,https://www.twz.com/rotax-engine-found-in-iranian-mohajer-6-drone-downed-over-ukraine,high,Rotax 912 IS Sport engine
+nvidia-lancet,NVIDIA,manufacturer,Lancet-3,drone,found_inside,https://isis-online.org/isis-reports/russian-lancet-3-kamikaze-drone-filled-with-foreign-parts,high,Jetson TX2 AI module
+ublox-lancet,u-blox,manufacturer,Lancet-3,drone,found_inside,https://isis-online.org/isis-reports/russian-lancet-3-kamikaze-drone-filled-with-foreign-parts,high,GNSS receiver w/ anti-jam
+axi-lancet,AXI Model Motors,manufacturer,Lancet-3,drone,found_inside,https://isis-online.org/isis-reports/russian-lancet-3-kamikaze-drone-filled-with-foreign-parts,high,AXI 5330 Gold Line brushless motor
+micron-shahed,Micron Technology,manufacturer,Shahed-136,drone,found_inside,https://war-sanctions.gur.gov.ua/en/page-shahed-136,high,
+ti-geran5,Texas Instruments,manufacturer,Geran-5,drone,found_inside,https://kyivindependent.com/exclusive-american-european-microchips-found-in-russias-latest-missile-like-drone/,high,6 distinct chips identified
+cts-geran5,CTS Corporation,manufacturer,Geran-5,drone,found_inside,https://kyivindependent.com/exclusive-american-european-microchips-found-in-russias-latest-missile-like-drone/,high,Clock oscillators dated Sep 2025 + Feb 2024
+mps-geran5,Monolithic Power Systems,manufacturer,Geran-5,drone,found_inside,https://kyivindependent.com/exclusive-american-european-microchips-found-in-russias-latest-missile-like-drone/,high,Power management ICs
+infineon-geran5,Infineon Technologies,manufacturer,Geran-5,drone,found_inside,https://kyivindependent.com/exclusive-american-european-microchips-found-in-russias-latest-missile-like-drone/,high,German chip
+xiamen-orlan,Xiamen Limbach,manufacturer,Orlan-10,drone,found_inside,https://leave-russia.org/xiamen-limbach,high,L550E engine clone
+delong-xiamen,Fujian Delong Aviation,reseller,Xiamen Limbach,manufacturer,ships_via,https://www.thewirechina.com/2024/10/22/how-german-drone-engines-landed-in-russian-hands-via-china-fujian-delong-aviation-technology/,high,Transit relay China->Russia
+minghuaxin-russia,Shenzhen Minghuaxin,distributor,Rustakt,shell_company,sells_to,https://leave-russia.org/shenzhen-minghuaxin,high,5% stake in Russia FPV maker
+pbs-shahed238,PBS Velká Bíteš,manufacturer,Shahed-238,drone,found_inside,https://militarnyi.com/en/news/czech-engine-and-western-electronics-components-of-the-shahed-238-drone-revealed/,medium,TJ100 design copied as Tolou-10
+pbs-palianytsia,PBS Velká Bíteš,manufacturer,Palianytsia,drone,found_inside,https://en.wikipedia.org/wiki/Palianytsia_(missile),high,AI-PBS-350 (joint with Ivchenko-Progress)
+ardupilot-spiderweb,ArduPilot Foundation,manufacturer,Spider's Web Osa drones,drone,found_inside,https://en.wikipedia.org/wiki/Operation_Spiderweb,high,Open-source autopilot used by SBU
+auterion-bolt,Auterion,manufacturer,Anduril Bolt,drone,found_inside,https://auterion.com/auterion-introduces-breakthrough-drone-technology-for-kinetic-military-use-to-help-democracies-defend-themselves/,medium,Skynode S edge-AI

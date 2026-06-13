@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/USER/awesome-drone-warfare-osint/data/schemas/incidents.schema.json",
+  "title": "Incident",
+  "description": "A geo-tagged drone-related event derived from open conflict-event data (e.g. ACLED). PII excluded.",
+  "type": "object",
+  "required": ["incident_id", "date", "country", "drone_family", "source_url"],
+  "properties": {
+    "incident_id":    { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "date":           { "type": "string", "format": "date" },
+    "country":        { "type": "string", "pattern": "^([A-Z]{2}|UNK)$" },
+    "admin1":         { "type": ["string", "null"] },
+    "location_name":  { "type": ["string", "null"] },
+    "lat":            { "type": ["number", "null"], "minimum": -90, "maximum": 90 },
+    "lon":            { "type": ["number", "null"], "minimum": -180, "maximum": 180 },
+    "drone_family":   { "type": "string" },
+    "drone_id":       { "type": ["string", "null"], "pattern": "^[a-z0-9-]+$" },
+    "launch_party":   { "type": ["string", "null"] },
+    "target_type":    { "type": ["string", "null"] },
+    "outcome":        { "type": ["string", "null"] },
+    "source_url":     { "type": "string", "format": "uri" },
+    "notes":          { "type": ["string", "null"], "maxLength": 1024 }
+  },
+  "additionalProperties": false
+}

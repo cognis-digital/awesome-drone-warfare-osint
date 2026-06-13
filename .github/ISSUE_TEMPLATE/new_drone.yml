@@ -1,0 +1,59 @@
+name: 📥 Propose a new drone platform
+description: Add a previously undocumented UAV/USV/UGV to data/drones.csv
+title: "[drone] <NAME>"
+labels: ["data:drone", "good-first-row"]
+body:
+  - type: input
+    id: display_name
+    attributes:
+      label: Display name
+      placeholder: "Shahed-238 / Geran-3 (jet)"
+    validations: { required: true }
+  - type: input
+    id: operators
+    attributes:
+      label: Operators (ISO-2 codes, comma-separated)
+      placeholder: "RU, BY"
+    validations: { required: true }
+  - type: dropdown
+    id: role
+    attributes:
+      label: Primary role
+      options:
+        - loitering_munition
+        - strike
+        - bomber
+        - fpv_strike
+        - isr
+        - recon
+        - decoy
+        - ew
+        - communications_relay
+        - usv
+        - ugv
+        - logistics
+        - training
+        - interceptor
+        - missile
+        - subsystem
+        - unknown
+    validations: { required: true }
+  - type: input
+    id: primary_source_url
+    attributes:
+      label: Primary source URL
+      description: Must be a public page or PDF
+    validations: { required: true }
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes / first-observation date / additional sources
+  - type: checkboxes
+    id: charter
+    attributes:
+      label: Charter
+      options:
+        - label: "I have read the DISCLAIMER and CONTRIBUTING."
+          required: true
+        - label: "This proposal contains no firmware, no CAD, no exploit, no PII."
+          required: true

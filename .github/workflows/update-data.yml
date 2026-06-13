@@ -1,0 +1,45 @@
+name: Weekly data update
+
+on:
+  schedule:
+    # Mondays 06:00 UTC
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Scrape GUR War & Sanctions portal
+        run: python scrapers/gur_war_sanctions.py --out-dir data/ --rate-limit 1.0
+      - name: Index CAR Field Dispatches
+        run: python scrapers/car_field_dispatches.py --out-dir data/
+        continue-on-error: true
+      - name: Validate
+        run: python scripts/validate.py
+      - name: Update README headline numbers
+        run: python scripts/headline_numbers.py
+      - name: Open PR with diff
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "data: weekly auto-sync (GUR + CAR)"
+          title: "data: weekly auto-sync"
+          body: |
+            Automated weekly sync from primary sources.
+
+            * GUR War & Sanctions Portal
+            * Conflict Armament Research Field Dispatches
+
+            CI has validated the diff. Review the headline numbers and merge.
+          branch: data/auto-sync
+          delete-branch: true
