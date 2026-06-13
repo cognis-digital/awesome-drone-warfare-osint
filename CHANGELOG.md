@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.0] — 2026-06-13
+### Added
+- `query.py` — a stdlib analyst/compliance CLI over the dataset: `component`,
+  `manufacturer`, `country`, `drone`, `drones` (filters), `stats`, with `--json`.
+  Answers the export-control question directly ("which weapon systems is part X
+  documented in?") — e.g. `component jetson` → Klyn / Lancet Izd-51 / ZALA.
+- CI self-test (`query.py --selftest`); README "Query the dataset" section.
+
 ## [0.4.0] — 2026-06-13
 ### Added
 - `docs/counter-uas-detection.md` — a defensive reference on how hostile drones are

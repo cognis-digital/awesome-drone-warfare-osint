@@ -21,6 +21,8 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Validate against JSON Schema + Pandera
         run: python scripts/validate.py
+      - name: Self-test the query CLI (stdlib only)
+        run: python query.py --selftest
       - name: Update README headline numbers
         if: github.ref == 'refs/heads/main'
         run: python scripts/headline_numbers.py

@@ -109,6 +109,23 @@ Cross-source confirmation: [KSE Institute](https://kse.ua/about-the-school/news/
 
 ---
 
+## Query the dataset
+
+`query.py` (stdlib) turns the dataset into an analyst tool — built for
+export-control / sanctions-compliance work: *"does a part we (or a supplier) make
+show up in any documented weapon system?"*
+
+```bash
+python query.py component jetson          # which weapons is the NVIDIA Jetson in?
+python query.py manufacturer "u-blox"     # all documented parts from a maker + the drones they're in
+python query.py country US                # components by manufacturer country
+python query.py drone shahed-136          # components documented in a platform
+python query.py drones --operator RU --role loitering_munition
+python query.py stats                     # headline numbers
+```
+Add `--json` for machine-readable output. (`component jetson` → the NVIDIA Jetson TX2,
+documented in the Klyn, Lancet Izd-51, and ZALA platforms.)
+
 ## Methodology
 
 Every record in `data/` is derived from a **publicly accessible primary source**:
