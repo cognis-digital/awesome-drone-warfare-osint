@@ -57,4 +57,4 @@ graph LR
 | maritimeint watchlist | can be narrated as | agentlex messages (via humind) |
 
 > Generated as part of a cross-repo interop pass. Each repo links here so the suite is
-> navigable as one composable system. **280+ tools →** [github.com/cognis-digital](https://github.com/cognis-digital)
+> navigable as one composable system. **300+ tools →** [github.com/cognis-digital](https://github.com/cognis-digital)

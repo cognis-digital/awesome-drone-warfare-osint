@@ -333,7 +333,7 @@ Part of an open suite of **defensive, analytical** intelligence tools that compo
 - [`stixgen`](https://github.com/cognis-digital/stixgen) · [`iocextract`](https://github.com/cognis-digital/iocextract) · [`attackmap`](https://github.com/cognis-digital/attackmap) — IOC → STIX, ATT&CK mapping
 - Run private AI over your own hardware → [`edgemesh`](https://github.com/cognis-digital/edgemesh)
 
-**280+ open security & OSINT tools →** [github.com/cognis-digital](https://github.com/cognis-digital)
+**300+ open security & OSINT tools →** [github.com/cognis-digital](https://github.com/cognis-digital)
 
 ## Disclaimer
 
