@@ -23,6 +23,17 @@
 
 ---
 
+## How the data flows
+
+```mermaid
+flowchart LR
+  SRC[GUR War & Sanctions · CAR · ISIS-online · CSIS · 30+ sources] --> DATA[(dataset<br/>components · drones · manufacturers · teardowns · supply-chain)]
+  DATA --> VAL[schema validation<br/>CI: no source_url, no merge]
+  DATA --> Q[query.py<br/>component / manufacturer / country]
+  DATA --> STAT[analysis<br/>statistics · counter-UAS]
+  Q --> USE[export-control / sanctions compliance]
+```
+
 ## 📊 The dataset at a glance
 
 <!-- HEADLINE-NUMBERS-START -->
