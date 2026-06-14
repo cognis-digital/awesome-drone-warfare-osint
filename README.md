@@ -377,3 +377,8 @@ Read the full [`DISCLAIMER.md`](DISCLAIMER.md) before redistributing.
 
 Part of the **Cognis Neural Suite** — 300+ source-available tools organized across 12 domains under the JTF MERIDIAN command structure. See the [suite on GitHub](https://github.com/cognis-digital) and [jtf-meridian](https://github.com/cognis-digital/jtf-meridian) for how the pieces fit together.
 <!-- cognis:domains:end -->
+
+## Integrations
+
+Forward `awesome-drone-warfare-osint`'s findings to STIX/MISP/Sigma/Splunk/Elastic/Slack/webhooks via
+[`cognis-connect`](https://github.com/cognis-digital/cognis-connect). See **[INTEGRATIONS.md](INTEGRATIONS.md)**.
