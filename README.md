@@ -23,6 +23,31 @@
 
 ---
 
+
+<!-- cognis:example:start -->
+## 🔎 Example output
+
+**Sample result format** _(illustrative values — run on your own data for real findings):_
+
+```
+{
+"drone_id": "DRN-001",
+"latitude": 37.7749,
+"longitude": -122.4194,
+"altitude": 100,
+"speed": 20,
+"direction": 270,
+"timestamp": "2023-02-15T14:30:00Z",
+"battery_level": 75,
+"signal_strength": 80,
+"target_type": "person",
+"target_distance": 50,
+"target_velocity": 5
+}
+```
+
+<!-- cognis:example:end -->
+
 ## How the data flows
 
 ```mermaid
