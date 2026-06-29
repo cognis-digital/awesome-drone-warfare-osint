@@ -69,7 +69,7 @@ flowchart LR
 | Manufacturers identified | **621** | cross-linked to OpenSanctions |
 | Countries of origin | **27** | weighted by component count |
 | Strike incidents geo-tagged | **—** | ACLED + OSINT timeline (join-only, not redistributed) |
-| Last sync | **2026-06-13** | weekly GitHub Action cron |
+| Last sync | **2026-06-29** | weekly GitHub Action cron |
 <!-- HEADLINE-NUMBERS-END -->
 
 > **Sourcing rule (enforced by CI):** every component row carries a public `source_url`.
