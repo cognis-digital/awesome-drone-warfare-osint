@@ -19,6 +19,7 @@
 🛡  **[Counter-UAS detection & identification](docs/counter-uas-detection.md)**  ·  
 🧭  **[Drone family tree](docs/visualizations/family-tree.md)**  ·  
 🪪  **[Citation (BibTeX)](CITATION.cff)**  ·  
+🗺  **[Roadmap](ROADMAP.md)**  ·  
 ⚖  **[Ethical disclaimer](DISCLAIMER.md)**
 
 ---
@@ -69,7 +70,7 @@ flowchart LR
 | Manufacturers identified | **621** | cross-linked to OpenSanctions |
 | Countries of origin | **27** | weighted by component count |
 | Strike incidents geo-tagged | **—** | ACLED + OSINT timeline (join-only, not redistributed) |
-| Last sync | **2026-06-13** | weekly GitHub Action cron |
+| Last sync | **2026-07-16** | weekly GitHub Action cron |
 <!-- HEADLINE-NUMBERS-END -->
 
 > **Sourcing rule (enforced by CI):** every component row carries a public `source_url`.
@@ -147,9 +148,11 @@ Cross-source confirmation: [KSE Institute](https://kse.ua/about-the-school/news/
 
 ## Query the dataset
 
-`query.py` (stdlib) turns the dataset into an analyst tool — built for
-export-control / sanctions-compliance work: *"does a part we (or a supplier) make
-show up in any documented weapon system?"*
+`query.py` (pure standard library — no install required) turns the dataset into an
+analyst tool built for export-control / sanctions-compliance work: *"does a part we
+(or a supplier) make show up in any documented weapon system?"*
+
+### Search & lookup
 
 ```bash
 python query.py component jetson          # which weapons is the NVIDIA Jetson in?
@@ -159,8 +162,134 @@ python query.py drone shahed-136          # components documented in a platform
 python query.py drones --operator RU --role loitering_munition
 python query.py stats                     # headline numbers
 ```
-Add `--json` for machine-readable output. (`component jetson` → the NVIDIA Jetson TX2,
-documented in the Klyn, Lancet Izd-51, and ZALA platforms.)
+
+### Supply-chain analytics
+
+Three analytical subcommands turn the raw rows into the numbers compliance and
+export-control teams actually report on:
+
+```bash
+# Supply-chain concentration for one platform — where (by country) do its parts come from?
+python query.py chokepoint geran-4-uav
+#   country  components  share_pct
+#   US       24          44.4
+#   CN       14          25.9
+#   ...
+#   54 component(s) across 7 origin countries. Most concentrated origin: US (24, 44.4%).
+
+# Supplier leverage — which platforms depend most heavily on a country's parts?
+python query.py exposure US
+
+# Sanctions posture — break the catalogue down by sanctions status (optionally one country)
+python query.py sanctions
+python query.py sanctions --country CN
+```
+
+* **`chokepoint <drone_id>`** — counts a platform's documented components by
+  manufacturer country and reports each origin's share, surfacing single-origin
+  choke points.
+* **`exposure <CC>`** — the same question from the supplier side: how many of a
+  country's parts appear in each platform, quantifying that country's leverage.
+* **`sanctions [--country CC]`** — component breakdown by `sanctions_status`.
+
+### Output formats
+
+Every command accepts a global `--format {table,json,csv}` flag; `--json` is kept
+as a backward-compatible shorthand for `--format json`:
+
+```bash
+python query.py --format json chokepoint shahed-136-uav-157-components
+python query.py --format csv  exposure US > us_exposure.csv
+python query.py --json component jetson
+```
+
+(`component jetson` → the NVIDIA Jetson TX2, documented in the Klyn, Lancet Izd-51,
+and ZALA platforms.)
+
+See [`docs/USAGE.md`](docs/USAGE.md) for a full command reference and worked examples.
+
+## Install
+
+The query CLI and the live-search module are **pure standard library** — clone and
+run `python query.py …` with nothing installed. The data-maintenance scripts
+(scrapers, schema validation, chart rendering) need the third-party packages:
+
+```bash
+git clone https://github.com/cognis-digital/awesome-drone-warfare-osint
+cd awesome-drone-warfare-osint
+
+# Option A — just the dependencies for validation/scraping:
+pip install -r requirements.txt
+
+# Option B — install as a package (adds the `drone-osint-query` console command):
+pip install -e .
+drone-osint-query stats
+```
+
+Python 3.9+ is supported and exercised in CI on 3.9 / 3.11 / 3.12.
+
+## Architecture
+
+```
+data/*.csv            the dataset (components, drones, manufacturers, teardowns, supply-chain edges)
+data/schemas/*.json   JSON Schema (Draft 2020-12) for each table
+osint_analytics.py    pure, typed analytics primitives (concentration / exposure / sanctions / CSV)
+query.py              stdlib CLI — search + analytics, table/json/csv output
+livesearch.py         keyless real-time feed / web-search ingestion (stdlib only)
+scrapers/             primary-source ingestion (GUR, NACP, CAR)
+scripts/validate.py   JSON-Schema + cross-row referential validation (CI gate)
+tests/                pytest suite (unit + CLI + live-search + data-integrity)
+```
+
+`query.py` is a thin presentation layer over the pure functions in
+`osint_analytics.py`, which makes the analytics independently unit-testable.
+Full write-up: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
+
+## Configuration reference
+
+| Where | Setting | Meaning |
+|---|---|---|
+| `query.py` | `--format {table,json,csv}` | output format (default `table`); `--json` = `--format json` |
+| `query.py drones` | `--operator / --role / --country` | platform-list filters |
+| `query.py sanctions` | `--country CC` | scope the sanctions breakdown to one origin country |
+| `livesearch` | `web_search(q, when="7d")` | recency bound (`1h`/`1d`/`7d`/…) for the keyless news feed |
+| `livesearch` | `harvest(sources, since_days, min_year)` | recency + minimum-year filter for mixed feed/query ingestion |
+| `scripts/validate.py` | env `PYTHONUTF8=1` | recommended on Windows for UTF-8 CSV handling |
+
+## Testing
+
+```bash
+pip install pytest ruff
+PYTHONUTF8=1 pytest -q          # full unit + CLI + integration suite
+python query.py --selftest      # stdlib-only smoke test (no pytest needed)
+python scripts/validate.py      # schema + referential validation
+ruff check .                    # lint
+```
+
+The suite covers the analytics primitives, the CLI (every subcommand and output
+format, backward-compatibility of `--json`), the live-search parsers (RSS/Atom,
+DuckDuckGo scrape, de-dup + recency filtering — all offline via monkeypatched
+fetches), the validator's type coercion, and invariants over the real shipped
+dataset. CI (`.github/workflows/ci.yml`) runs it on every push and PR.
+
+## FAQ
+
+**Do I need to install anything to query the data?** No — `query.py` and
+`livesearch.py` are standard-library only. `pip install -r requirements.txt` is
+only needed for scraping, schema validation and chart rendering.
+
+**Is the data redistributable?** The dataset is CC BY 4.0 and every component row
+carries a public `source_url`. Incident geodata is join-only (not redistributed).
+See [`LICENSE-DATA`](LICENSE-DATA) and [`DISCLAIMER.md`](DISCLAIMER.md).
+
+**How current is it?** A weekly GitHub Action re-scrapes the primary sources and
+opens a PR; `livesearch.py` can pull live news at query time with no API key.
+
+**Can I get machine-readable output?** Yes — add `--format json` or `--format csv`
+to any `query.py` command.
+
+**Where do I report a wrong row?** Open a correction issue (templates under
+`.github/ISSUE_TEMPLATE/`) or see [`TAKEDOWNS.md`](TAKEDOWNS.md).
 
 ## Methodology
 

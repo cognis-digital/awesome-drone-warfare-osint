@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "awesome-drone-warfare-osint"
+version = "0.2.0"
+description = "Citation-grade OSINT dataset and query tooling for foreign components in drone & missile platforms."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+dependencies = [
+    "requests>=2.31",
+    "beautifulsoup4>=4.12",
+    "lxml>=4.9",
+    "jsonschema>=4.21",
+    "pandas>=2.0",
+    "pandera>=0.18",
+    "matplotlib>=3.7",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.5",
+]
+
+[project.scripts]
+drone-osint-query = "query:main"
+
+[tool.setuptools]
+# Flat layout: the package is a small set of top-level modules alongside data
+# directories, so discovery is declared explicitly rather than auto-detected.
+py-modules = ["query", "livesearch", "osint_analytics"]
+
+# The query CLI and the live-search module are pure standard library and have
+# no third-party runtime dependencies; only the data-maintenance scripts need
+# the packages above.
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 120
+target-version = "py39"
+
+[tool.ruff.lint]
+# Enforce the rules that catch real defects (pyflakes F, pycodestyle errors)
+# while permitting the repository's established compact style: single-line
+# compound statements (E701/E702), grouped imports in the scrapers (E401),
+# and the occasional long data/URL line. The lint gate stays meaningful
+# (unused names, undefined names, redefinitions are all caught) without
+# forcing a mechanical reformat of the existing code base.
+select = ["E", "F", "W"]
+ignore = ["E701", "E702", "E741", "E401"]
+
+[tool.ruff.lint.per-file-ignores]
+# The scraper carries a couple of long, self-documenting regex / literal
+# lines that are clearer left intact than wrapped.
+"scrapers/*.py" = ["E501"]

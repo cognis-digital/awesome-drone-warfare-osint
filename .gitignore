@@ -6,6 +6,10 @@ __pycache__/
 venv/
 .env
 
+# Test / lint caches
+.pytest_cache/
+.ruff_cache/
+
 # Jupyter
 .ipynb_checkpoints/
 

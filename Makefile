@@ -1,7 +1,14 @@
-.PHONY: install scrape validate build clean all
+.PHONY: install scrape validate build clean all test lint
 
 install:
 	pip install -r requirements.txt
+
+test:
+	PYTHONUTF8=1 pytest -q
+	python query.py --selftest
+
+lint:
+	ruff check .
 
 scrape:
 	python scrapers/gur_war_sanctions.py --out-dir data/ --rate-limit 1.0
